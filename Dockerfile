@@ -9,6 +9,8 @@ ENV PATH $PATH:$JAVA_HOME/bin:$MYCAT_HOME/bin
 RUN mkdir /etc/yum.repos.d/backup
 RUN mv /etc/yum.repos.d/*.repo  /etc/yum.repos.d/backup/
 ADD CentOS-Base.repo /etc/yum.repos.d/
+RUN mkdir /usr/share/info/dir
+RUN chmod -R 777 /usr/share/info/dir
 RUN yum clean all
 RUN yum makecache
 RUN yum update -y
