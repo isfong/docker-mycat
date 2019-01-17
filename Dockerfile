@@ -1,7 +1,7 @@
 FROM jdeathe/centos-ssh:latest
 MAINTAINER isfong@qq.com
 ADD jdk-8u202-linux-x64.tar.gz /usr/local/dev/
-ADD Mycat-server-1.6.6.1-release-20181031195535-linux.tar.gz /usr/local/dev/
+ADD mycat /usr/local/dev/
 ENV JAVA_HOME /usr/local/dev/jdk1.8.0_202
 ENV MYCAT_HOME /usr/local/dev/mycat
 ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
