@@ -8,7 +8,6 @@ docker run \
     -p 8066:8066 \
     -p 9066:9066 \
     -v /:/host \
-    -v /etc/timezone:/etc/timezone \
     -v /etc/localtime:/etc/localtime \
     -d isfong/mycat
 ```

@@ -3,4 +3,8 @@ set termencoding=utf-8
 set encoding=utf-8
 set number " 显示行号
 set cursorline " 突出显示当前行
+set nocompatible " 关闭 vi 兼容模式
+set nocompatible    "去掉有关vi一致性模式，避免以前版本的bug和局限
+set background=dark     "背景使用黑色
+set autoindent  "vim使用自动对齐，也就是把当前行的对齐格式应用到下一行(自动缩进）
 syntax on " 自动语法高亮
