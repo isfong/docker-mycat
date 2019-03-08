@@ -1,15 +1,24 @@
-FROM debian:latest
+FROM openjdk:8-jdk-stretch
+
 MAINTAINER isfong@qq.com
-ADD jdk-8u202-linux-x64.tar.gz /usr/local/dev/
-ADD mycat /usr/local/dev/mycat
-ENV JAVA_HOME /usr/local/dev/jdk1.8.0_202
-ENV MYCAT_HOME /usr/local/dev/mycat
-ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-ENV PATH $JAVA_HOME/bin:$MYCAT_HOME/bin:$PATH
+
+ADD http://dl.mycat.io/1.6.7.1/Mycat-server-1.6.7.1-release-20190213150257-linux.tar.gz /usr/local
+RUN cd /usr/local && tar -zxvf Mycat-server-1.6.7.1-release-20190213150257-linux.tar.gz && ls -lna
+
+ENV MYCAT_HOME /usr/local/mycat
+ENV PATH $MYCAT_HOME/bin:$PATH
+
+VOLUME /usr/local/mycat/conf
+VOLUME /usr/local/mycat/logs
+
 EXPOSE 8066 9066
+
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 ADD sources.list /etc/apt/
-RUN apt update
-RUN apt install apt-utils procps -y
-RUN apt upgrade
-CMD /usr/local/dev/mycat/bin/mycat console
+RUN apt update && apt install vim -y
+ADD vimrc-append /
+RUN cat /vimrc-append >> /etc/vim/vimrc
+
+
+
+CMD ["/usr/local/mycat/bin/mycat", "console"]
