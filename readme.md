@@ -9,5 +9,5 @@ docker run \
     -p 9066:9066 \
     -v /:/host \
     -v /etc/localtime:/etc/localtime \
-    -d isfong/mycat
+    -d isfong/mycat:latest
 ```
