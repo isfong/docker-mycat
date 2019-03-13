@@ -2,7 +2,8 @@
 
 ###### build image and create container
 ```diff
-docker build -t isfong/mycat:latest .
+docker build -t isfong/docker-mycat-bossdream-v1.6.7.1:latest .
+docker tag isfong/docker-mycat-bossdream-v1.6.7.1:latest docker-mycat-bossdream-v1.6.7.1:latest
 docker run \
     --name mycat \
     -p 8066:8066 \

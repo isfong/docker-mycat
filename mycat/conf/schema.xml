@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+    <schema name="bossdream_db" checkSQLschema="false" dataNode="dataNode1" sqlMaxLimit="100">
+    </schema>
+    <dataNode name="dataNode1" dataHost="dataHost1" database="bossdream_db"/>
+    <dataHost name="dataHost1" maxCon="1000" minCon="10" balance="1" writeType="0" dbType="mysql" dbDriver="native"
+              switchType="1" slaveThreshold="100">
+        <heartbeat>select user()</heartbeat>
+        <!-- can have multi write hosts -->
+
+        <writeHost host="writeHostMaster1" url="172.17.157.33:13306" user="root" password="bossdream.pass4MYSQL">
+            <!-- can have multi read hosts -->
+            <readHost host="readHostSlave1" url="172.17.225.110:13306" user="root" password="bossdream.pass4MYSQL"/>
+        </writeHost>
+
+        <writeHost host="writeHostMaster2" url="172.17.157.33:33061" user="root" password="bossdream.pass4MYSQL">
+            <!-- can have multi read hosts -->
+            <readHost host="readHostSlave2" url="172.17.225.110:33061" user="root" password="bossdream.pass4MYSQL"/>
+        </writeHost>
+    </dataHost>
+</mycat:schema>
